@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+	createContext,
+	ReactNode,
+	useContext,
+	useReducer,
+	useState,
+} from "react";
 import { ShoppingCart } from "./../components/ShoppingCart";
 
 type ShoppingCartProviderProps = {
@@ -43,7 +49,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 	}
 
 	function increaseCartQuantity(id: number) {
-		console.log("GOT HERE");
 		setCartItems((currItems) => {
 			if (currItems.find((item) => item.id === id) == null) {
 				return [...currItems, { id, quantity: 1 }];
